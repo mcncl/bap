@@ -9,3 +9,10 @@
 🚀 Continued focus on speed
 
 📁 Supports local agent versions and global
+
+## Installation
+
+```sh
+brew tap mcncl/bap
+brew install bap
+```
