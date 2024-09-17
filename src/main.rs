@@ -9,7 +9,7 @@ use clap::{Args, Parser, Subcommand};
 #[derive(Parser)]
 #[command(
     name = "bap",
-    about = "Buildkite Agent Partner - A tool for managing Buildkite agent versions",
+    about = "Buildkite Agent Picker - 🚀 A Rust based Buildkite Agent Manager",
     long_about = None
 )]
 struct Cli {
