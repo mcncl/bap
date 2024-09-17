@@ -19,10 +19,7 @@ pub async fn run(version: &str) -> Result<()> {
         version_without_v, filename
     );
 
-    println!(
-        "Installing agent {} for {}-{}...",
-        version_without_v, os, arch
-    );
+    println!("📦 Installing agent {} ({})...", version_without_v, arch);
 
     let client = Client::new();
     let response = client.get(&url).send().await?;
@@ -51,11 +48,7 @@ pub async fn run(version: &str) -> Result<()> {
     // Update the list of available versions
     update_versions_list(version_without_v)?;
 
-    println!(
-        "Successfully installed Buildkite agent version {} to {}",
-        version_without_v,
-        dest_path.display()
-    );
+    println!("🚀 {} installed... ", version_without_v,);
     Ok(())
 }
 
@@ -63,7 +56,7 @@ fn determine_arch() -> Result<String> {
     Ok(match std::env::consts::ARCH {
         "x86_64" => "amd64",
         "aarch64" => "arm64",
-        arch => bail!("Unsupported architecture: {}", arch),
+        arch => bail!("🚫 Unsupported architecture: {}", arch),
     }
     .to_string())
 }
