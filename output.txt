@@ -1,0 +1,40 @@
+   Compiling bap v0.1.0 (/Users/ben/work/bap)
+warning: unused import: `Context`
+ --> src/commands/install.rs:2:14
+  |
+2 | use anyhow::{Context, Result};
+  |              ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `std::path::Path`
+ --> src/commands/install.rs:7:5
+  |
+7 | use std::path::Path;
+  |     ^^^^^^^^^^^^^^^
+
+error[E0277]: a value of type `Result<Vec<std::string::String>, anyhow::Error>` cannot be built from an iterator over elements of type `Result<std::string::String, std::io::Error>`
+    --> src/commands/list.rs:30:56
+     |
+30   |     let versions: Result<Vec<String>> = reader.lines().collect();
+     |                                                        ^^^^^^^ value of type `Result<Vec<std::string::String>, anyhow::Error>` cannot be built from `std::iter::Iterator<Item=Result<std::string::String, std::io::Error>>`
+     |
+     = help: the trait `FromIterator<Result<std::string::String, std::io::Error>>` is not implemented for `Result<Vec<std::string::String>, anyhow::Error>`
+     = help: the trait `FromIterator<Result<std::string::String, anyhow::Error>>` is implemented for `Result<Vec<std::string::String>, anyhow::Error>`
+     = help: for that trait implementation, expected `anyhow::Error`, found `std::io::Error`
+note: the method call chain might not have had the expected associated types
+    --> src/commands/list.rs:30:48
+     |
+29   |     let reader = BufReader::new(file);
+     |                  -------------------- this expression has type `BufReader<File>`
+30   |     let versions: Result<Vec<String>> = reader.lines().collect();
+     |                                                ^^^^^^^ `Iterator::Item` is `Result<String, Error>` here
+note: required by a bound in `collect`
+    --> /Users/ben/.rustup/toolchains/stable-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs:2050:19
+     |
+2050 |     fn collect<B: FromIterator<Self::Item>>(self) -> B
+     |                   ^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `Iterator::collect`
+
+For more information about this error, try `rustc --explain E0277`.
+warning: `bap` (bin "bap") generated 2 warnings
+error: could not compile `bap` (bin "bap") due to 1 previous error; 2 warnings emitted
