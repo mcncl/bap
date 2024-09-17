@@ -1,6 +1,8 @@
 # Buildkite Agent Picker (`bap`)
 > A simple, occasionally fast Buildkite agent manager, built in Rust.
 
+![bap demo](./images/demo.gif)
+
 ## Features
 ✨ Easy to use, instant start up of agents
 
