@@ -6,3 +6,4 @@ pub mod list_remote;
 pub mod run;
 pub mod uninstall;
 pub mod use_version;
+pub mod version;

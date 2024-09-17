@@ -29,7 +29,7 @@ enum Commands {
     Use(VersionArg),
 
     /// Download and install a specific Buildkite agent version
-    Get(VersionArg),
+    Install(VersionArg),
 
     /// Set the default Buildkite agent version
     Default(VersionArg),
@@ -42,6 +42,9 @@ enum Commands {
 
     /// Uninstall a specific Buildkite agent version
     Uninstall(VersionArg),
+
+    /// Display the bap version that's installed
+    Version,
 }
 
 #[derive(Args)]
@@ -72,7 +75,7 @@ async fn main() -> Result<()> {
         Some(Commands::Use(args)) => {
             commands::use_version::run(&args.version)?;
         }
-        Some(Commands::Get(args)) => {
+        Some(Commands::Install(args)) => {
             commands::install::run(&args.version).await?;
         }
         Some(Commands::Default(args)) => {
@@ -86,6 +89,9 @@ async fn main() -> Result<()> {
         }
         Some(Commands::Uninstall(args)) => {
             commands::uninstall::run(&args.version)?;
+        }
+        Some(Commands::Version) => {
+            commands::version::run()?;
         }
         None => {
             println!("No command specified. Use --help for usage information.");

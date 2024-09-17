@@ -20,7 +20,7 @@ pub async fn run(version: &str) -> Result<()> {
     );
 
     println!(
-        "Downloading Buildkite agent version {} for {}-{}...",
+        "Installing agent {} for {}-{}...",
         version_without_v, os, arch
     );
 
